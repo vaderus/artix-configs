@@ -111,7 +111,7 @@ float alpha = 0.8;
 float alphaOffset = 0.0;
 float alphaUnfocus;
 
-#include"/home/vader/.themes/google-light.st"
+#include"/usr/share/.themes/google-light.st"
 
 [255] = 0,
 /* more colors can be added after 255 to use with DefaultXX */
