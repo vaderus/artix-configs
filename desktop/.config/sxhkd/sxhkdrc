@@ -6,7 +6,7 @@ Print
 	scrot -e 'xclip -selection clipboard -t image/png -i $f' /home/vader/media/img/scrot/.jpeg
 
 alt + Print
-	scrot -l opacity=100 -s -e 'xclip -selection clipboard -t image/png -i $f' /home/vader/media/img/scrot/.jpeg
+	scrot -l mode=edge -s -e 'xclip -selection clipboard -t image/png -i $f' /home/vader/media/img/scrot/.jpeg
 # terminal emulator
 super + alt +Return
 	st
