@@ -1,18 +1,17 @@
 [colors]
-;background = ${xrdb:color0:#222}
-background = #005577
+;background = #005577
+background = #478062
 background-alt = #222
-;foreground = ${xrdb:color7:#222}
 foreground = #bbb
+;foreground-alt = #000
 foreground-alt = #eee
 primary = #ffb52a
 secondary = #e60053
-alert = #bd2c40
 
 [bar/barra]
 modules-left = bspwm test xwindow
 modules-center = 
-modules-right = mpd filesystem gputemp cputemp cpu memory  date time 
+modules-right = mpd home filesystem gputemp cputemp cpu memory  date time 
 width = 100%
 height = 22
 ;offset-x = 1%
@@ -30,7 +29,7 @@ font-0 = Hack:size=11;3:antialias=true
 font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
 tray-position = right
 tray-padding = 2
-tray-background = ${colors.background-alt}
+tray-background = #000000
 wm-restack = bspwm
 cursor-click = pointer
 cursor-scroll = ns-resize
@@ -39,7 +38,8 @@ foreground = ${colors.foreground}
 
 [module/xwindow]
 type = internal/xwindow
-label = " %title:0:80:...%"
+label = " %title:0:60:...%"
+label-foreground = ${colors.foreground-alt}
 
 [module/test]
 type = custom/script
@@ -48,13 +48,24 @@ exec = echo bspwm
 label= " [%output:0:15:...%] "
 label-background = ${colors.background-alt}
 
+[module/home]
+type = internal/fs
+interval = 25
+
+mount-0 = /home
+
+label-mounted = " [%{F#478062}%mountpoint%%{F-}:%free% free] "
+label-mounted-background= ${colors.background-alt}
+label-unmounted = %mountpoint% not mounted
+label-unmounted-foreground = ${colors.foreground-alt}
+
 [module/filesystem]
 type = internal/fs
 interval = 25
 
 mount-0 = /
 
-label-mounted = " [%{F#0a81f5}%mountpoint%%{F-}: %percentage_used%%] "
+label-mounted = " [%{F#478062}%mountpoint%%{F-}:%free% free] "
 label-mounted-background= ${colors.background-alt}
 label-unmounted = %mountpoint% not mounted
 label-unmounted-foreground = ${colors.foreground-alt}
@@ -64,6 +75,7 @@ type = internal/bspwm
 label-focused = " %index% "
 label-focused-background = ${colors.background}
 label-focused-underline= ${colors.primary}
+label-focused-foreground= ${colors.foreground-alt}
 
 label-occupied = "⁰%index% "
 label-occupied-background = ${colors.background-alt}
@@ -72,7 +84,7 @@ label-urgent = " %index% "
 label-urgent-background = ${colors.alert}
 
 label-empty = " %index% "
-label-empty-foreground = ${colors.foreground-alt}
+label-empty-foreground = ${colors.foreground}
 label-empty-background = ${colors.background-alt}
 ; label-separator = |
 
@@ -123,22 +135,21 @@ thermal-zone = 0
 warn-temperature = 60
 format = <label>
 format-warn = <label-warn>
-label = " [CPU_temp: %temperature-c%] "
+label = " [CPU_temp:%{F#60bf2a}%temperature-c%%{F-}] "
 label-background = ${colors.background-alt}
-label-warn = " [CPU_temp! %temperature-c%] "
-label-warn-background = ${colors.alert}
+label-warn = " [CPU_temp: %{F#ff0000}%temperature-c%%{F-}] "
 
 [module/gputemp]
 type = internal/temperature
 hwmon-path = /sys/devices/pci0000:00/0000:00:01.0/0000:01:00.0/hwmon/hwmon0/temp1_input
 thermal-zone = 0
-warn-temperature = 60
+warn-temperature = 70
 format = <label>
 format-warn = <label-warn>
-label = " [GPU_temp: %temperature-c%] "
+label = " [GPU_temp:%{F#60bf2a}%temperature-c%%{F-}] "
 label-background = ${colors.background-alt}
-label-warn = " [GPU_temp! %temperature-c%] "
-label-warn-background = ${colors.alert}
+label-warn = " [GPU_temp: %{F#ff0000}%temperature-c%%{F-}] "
+label-warn-background = ${colors.background-alt}
 
 [settings]
 screenchange-reload = true
