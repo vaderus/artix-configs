@@ -118,7 +118,7 @@ date = "%d-%m-%Y"
 label-background= ${colors.background-alt}
 [module/cputemp]
 type = internal/temperature
-hwmon-path = /sys/devices/platform/coretemp.0/hwmon/hwmon2/temp5_input 
+hwmon-path = /sys/devices/platform/coretemp.0/hwmon/hwmon3/temp5_input
 thermal-zone = 0
 warn-temperature = 60
 format = <label>
@@ -130,7 +130,7 @@ label-warn-background = ${colors.alert}
 
 [module/gputemp]
 type = internal/temperature
-hwmon-path = /sys/devices/pci0000:00/0000:00:01.0/0000:01:00.0/hwmon/hwmon3/temp1_input
+hwmon-path = /sys/devices/pci0000:00/0000:00:01.0/0000:01:00.0/hwmon/hwmon0/temp1_input
 thermal-zone = 0
 warn-temperature = 60
 format = <label>
